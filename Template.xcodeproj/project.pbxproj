@@ -22,6 +22,9 @@
 		612783282C12A73B00CF00B1 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612783222C12A73B00CF00B1 /* UserSession.swift */; };
 		6127832A2C12A7C900CF00B1 /* LoginView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612783292C12A7C900CF00B1 /* LoginView+ViewModel.swift */; };
 		6127832C2C12A80300CF00B1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6127832B2C12A80300CF00B1 /* README.md */; };
+		6127832F2C12AA6F00CF00B1 /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127832D2C12AA6E00CF00B1 /* HTTPHeader.swift */; };
+		612783302C12AA6F00CF00B1 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127832E2C12AA6F00CF00B1 /* HTTPClient.swift */; };
+		612783322C12AAC000CF00B1 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612783312C12AAC000CF00B1 /* HTTPError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		612783222C12A73B00CF00B1 /* UserSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		612783292C12A7C900CF00B1 /* LoginView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView+ViewModel.swift"; sourceTree = "<group>"; };
 		6127832B2C12A80300CF00B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		6127832D2C12AA6E00CF00B1 /* HTTPHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
+		6127832E2C12AA6F00CF00B1 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		612783312C12AAC000CF00B1 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,10 +122,11 @@
 				6127831E2C12A73B00CF00B1 /* LaunchView.swift */,
 				6127831F2C12A73B00CF00B1 /* LoginView.swift */,
 				612783292C12A7C900CF00B1 /* LoginView+ViewModel.swift */,
+				612783222C12A73B00CF00B1 /* UserSession.swift */,
 				612783212C12A73B00CF00B1 /* TabBarView.swift */,
 				6127831D2C12A73B00CF00B1 /* HomeView.swift */,
 				612783202C12A73B00CF00B1 /* MoreView.swift */,
-				612783222C12A73B00CF00B1 /* UserSession.swift */,
+				612783332C12AB2D00CF00B1 /* Network */,
 				612782F52C12A65100CF00B1 /* Assets.xcassets */,
 				612782F72C12A65100CF00B1 /* Preview Content */,
 			);
@@ -149,6 +156,16 @@
 				6127830E2C12A65100CF00B1 /* TemplateUITestsLaunchTests.swift */,
 			);
 			path = TemplateUITests;
+			sourceTree = "<group>";
+		};
+		612783332C12AB2D00CF00B1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				6127832E2C12AA6F00CF00B1 /* HTTPClient.swift */,
+				6127832D2C12AA6E00CF00B1 /* HTTPHeader.swift */,
+				612783312C12AAC000CF00B1 /* HTTPError.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,9 +301,12 @@
 			files = (
 				612783262C12A73B00CF00B1 /* MoreView.swift in Sources */,
 				612783252C12A73B00CF00B1 /* LoginView.swift in Sources */,
+				6127832F2C12AA6F00CF00B1 /* HTTPHeader.swift in Sources */,
 				612783272C12A73B00CF00B1 /* TabBarView.swift in Sources */,
+				612783322C12AAC000CF00B1 /* HTTPError.swift in Sources */,
 				6127831C2C12A6C300CF00B1 /* Application.swift in Sources */,
 				6127832A2C12A7C900CF00B1 /* LoginView+ViewModel.swift in Sources */,
+				612783302C12AA6F00CF00B1 /* HTTPClient.swift in Sources */,
 				612783242C12A73B00CF00B1 /* LaunchView.swift in Sources */,
 				612783232C12A73B00CF00B1 /* HomeView.swift in Sources */,
 				612783282C12A73B00CF00B1 /* UserSession.swift in Sources */,
