@@ -12,12 +12,21 @@ extension LoginView {
     final class ViewModel: ObservableObject {
         
         @Published var isLoggedIn = false
+        
+        @Published var username: String = ""
+        @Published var password: String = ""
                 
         private var inactivityTimer: Timer?
         
         func logIn() {
             isLoggedIn = true
             startInactivityTimer()
+            username = ""
+            password = ""
+        }
+        
+        func signUp() {
+            
         }
         
         func logOut() {
