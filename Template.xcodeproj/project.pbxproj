@@ -20,11 +20,11 @@
 		612783262C12A73B00CF00B1 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612783202C12A73B00CF00B1 /* MoreView.swift */; };
 		612783272C12A73B00CF00B1 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612783212C12A73B00CF00B1 /* TabBarView.swift */; };
 		612783282C12A73B00CF00B1 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612783222C12A73B00CF00B1 /* UserSession.swift */; };
-		6127832A2C12A7C900CF00B1 /* LoginView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612783292C12A7C900CF00B1 /* LoginView+ViewModel.swift */; };
 		6127832C2C12A80300CF00B1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6127832B2C12A80300CF00B1 /* README.md */; };
 		6127832F2C12AA6F00CF00B1 /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127832D2C12AA6E00CF00B1 /* HTTPHeader.swift */; };
 		612783302C12AA6F00CF00B1 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127832E2C12AA6F00CF00B1 /* HTTPClient.swift */; };
 		612783322C12AAC000CF00B1 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612783312C12AAC000CF00B1 /* HTTPError.swift */; };
+		61F00BEB2C30936B000E901A /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F00BEA2C30936B000E901A /* RegistrationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,11 +61,11 @@
 		612783202C12A73B00CF00B1 /* MoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		612783212C12A73B00CF00B1 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		612783222C12A73B00CF00B1 /* UserSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
-		612783292C12A7C900CF00B1 /* LoginView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView+ViewModel.swift"; sourceTree = "<group>"; };
 		6127832B2C12A80300CF00B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		6127832D2C12AA6E00CF00B1 /* HTTPHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
 		6127832E2C12AA6F00CF00B1 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		612783312C12AAC000CF00B1 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
+		61F00BEA2C30936B000E901A /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,7 @@
 				612782F12C12A64E00CF00B1 /* TemplateApp.swift */,
 				6127831E2C12A73B00CF00B1 /* LaunchView.swift */,
 				6127831F2C12A73B00CF00B1 /* LoginView.swift */,
-				612783292C12A7C900CF00B1 /* LoginView+ViewModel.swift */,
+				61F00BEA2C30936B000E901A /* RegistrationView.swift */,
 				612783222C12A73B00CF00B1 /* UserSession.swift */,
 				612783212C12A73B00CF00B1 /* TabBarView.swift */,
 				6127831D2C12A73B00CF00B1 /* HomeView.swift */,
@@ -302,10 +302,10 @@
 				612783262C12A73B00CF00B1 /* MoreView.swift in Sources */,
 				612783252C12A73B00CF00B1 /* LoginView.swift in Sources */,
 				6127832F2C12AA6F00CF00B1 /* HTTPHeader.swift in Sources */,
+				61F00BEB2C30936B000E901A /* RegistrationView.swift in Sources */,
 				612783272C12A73B00CF00B1 /* TabBarView.swift in Sources */,
 				612783322C12AAC000CF00B1 /* HTTPError.swift in Sources */,
 				6127831C2C12A6C300CF00B1 /* Application.swift in Sources */,
-				6127832A2C12A7C900CF00B1 /* LoginView+ViewModel.swift in Sources */,
 				612783302C12AA6F00CF00B1 /* HTTPClient.swift in Sources */,
 				612783242C12A73B00CF00B1 /* LaunchView.swift in Sources */,
 				612783232C12A73B00CF00B1 /* HomeView.swift in Sources */,
@@ -399,7 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -456,7 +456,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -481,7 +481,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -510,7 +510,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

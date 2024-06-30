@@ -15,30 +15,37 @@ struct LoginView: View {
     }
     
     @Environment(\.scenePhase) private var scenePhase
-    
-    @StateObject private var viewModel = ViewModel()
-    
+        
     @FocusState private var focusedField: Field?
     
     @State var blurRadius: CGFloat = 0
     
+    @State private var username: String = ""
+    @State private var password: String = ""
+          
+    @State private var isLoggedIn = false
+    @State private var isShowingRegistration = false
+    @State private var isShowingInactivityAlert = false
+
+    @State private var inactivityTimer: Timer?
+    
     var body: some View {
         VStack {
             Spacer()
-            TextField("Username", text: $viewModel.username)
+            TextField("Username", text: $username)
                 .frame(height: 32)
                 .focused($focusedField, equals: .username)
                 .submitLabel(.next)
             Divider()
                 .padding(.bottom, 4)
-            SecureField("Password", text: $viewModel.password)
+            SecureField("Password", text: $password)
                 .frame(height: 32)
                 .focused($focusedField, equals: .password)
                 .submitLabel(.go)
             Divider()
                 .padding(.bottom, 30)
             Button(action: {
-                viewModel.logIn()
+                logIn()
             }, label: {
                 Text("Log In")
                     .frame(maxWidth: .infinity, maxHeight: 32)
@@ -49,32 +56,39 @@ struct LoginView: View {
             }).padding(.top, 12)
             Spacer()
             Button(action: {
-                viewModel.signUp()
+                isShowingRegistration = true
             }, label: {
                 Text("Sign Up")
             }).buttonStyle(DefaultButtonStyle())
         }
         .padding(.horizontal, 32)
-        .ignoresSafeArea(.keyboard)
+//        .ignoresSafeArea(.keyboard)
         .onSubmit {
             switch focusedField {
             case .username:
                 focusedField = .password
             default:
-                viewModel.logIn()
+                logIn()
             }
         }
-        .fullScreenCover(isPresented: $viewModel.isLoggedIn, content: {
+        .fullScreenCover(isPresented: $isLoggedIn, content: {
             TabBarView()
                 .environmentObject(UserSession(onLogOut: {
-                    viewModel.logOut()
+                    logOut()
                 }))
                 .blur(radius: blurRadius)
         })
+        .sheet(isPresented: $isShowingRegistration, content: {
+            RegistrationView()
+        })
         .onReceive(NotificationCenter.default.publisher(for: .userActivity)) { _ in
-            viewModel.resetInactivityTimer()
-        }.onChange(of: scenePhase) { phase in
-            switch phase {
+            resetInactivityTimer()
+        }
+        .alert(isPresented: $isShowingInactivityAlert, content: {
+            Alert(title: Text("Log Out"), message: Text("Due to inactivity you were automatically logged out."), dismissButton: .default(Text("Ok")))
+        })
+        .onChange(of: scenePhase) { _, newScenePhase in
+            switch newScenePhase {
             case .active:
                 withAnimation { blurRadius = 0 }
             case .inactive:
@@ -85,6 +99,38 @@ struct LoginView: View {
                 break
             }
         }
+    }
+}
+
+extension LoginView {
+    
+    private func logIn() {
+        isLoggedIn = true
+        startInactivityTimer()
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            username = ""
+            password = ""
+        }
+    }
+    
+    private func startInactivityTimer() {
+        inactivityTimer?.invalidate()
+        inactivityTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { timer in
+            isLoggedIn = false
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                isShowingInactivityAlert = true
+            }
+        })
+    }
+    
+    private func resetInactivityTimer() {
+        guard isLoggedIn else { return }
+        startInactivityTimer()
+    }
+    
+    private func logOut() {
+        isLoggedIn = false
+        inactivityTimer?.invalidate()
     }
 }
 
