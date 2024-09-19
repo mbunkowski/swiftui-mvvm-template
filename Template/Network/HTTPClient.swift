@@ -6,17 +6,24 @@
 
 import Foundation
 
+@MainActor
 class HTTPClient {
     
     static let scheme = "https"
     
     private let host: String
     
+    private let port: Int?
+    
     private let session: URLSession
-
-    init(host: String, session: URLSession = .shared) {
+    
+    private let headers: [HTTPHeader]
+    
+    init(host: String, port: Int? = nil, session: URLSession = .shared) {
         self.host = host
+        self.port = port
         self.session = session
+        self.headers = [HTTPHeader(name: "Content-Type", value: "application/json")]
     }
     
     enum HTTPMethod: String {
@@ -77,7 +84,7 @@ class HTTPClient {
     func urlRequest(method: HTTPMethod, path: String, queryItems: [URLQueryItem]? = nil, headers: [HTTPHeader] = []) throws -> URLRequest {
         var request = URLRequest(url: try url(for: path, queryItems: queryItems))
         request.httpMethod = method.rawValue
-        headers.forEach {
+        (self.headers + headers).forEach {
             request.addValue($0.value, forHTTPHeaderField: $0.name)
         }
         return request
@@ -87,7 +94,8 @@ class HTTPClient {
         var request = URLRequest(url: try url(for: path, queryItems: queryItems))
         request.httpMethod = method.rawValue
         request.httpBody = try JSONEncoder().encode(body)
-        headers.forEach {
+        (self.headers + headers).forEach {
+            
             request.addValue($0.value, forHTTPHeaderField: $0.name)
         }
         return request
@@ -112,6 +120,7 @@ class HTTPClient {
         var components = URLComponents()
         components.scheme = HTTPClient.scheme
         components.host = host
+        components.port = port
         components.path = path
         components.queryItems = queryItems
         

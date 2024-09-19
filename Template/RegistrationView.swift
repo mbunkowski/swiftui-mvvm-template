@@ -10,7 +10,7 @@ import SwiftUI
 struct RegistrationView: View {
     
     enum Field {
-        case username
+        case email
         case password
         case confirmPassword
     }
@@ -19,17 +19,18 @@ struct RegistrationView: View {
     
     @FocusState private var focusedField: Field?
     
-    @State private var username: String = ""
+    @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
-
+    
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Username", text: $username)
+                TextField("Email", text: $email)
                     .frame(height: 32)
-                    .textContentType(.username)
-                    .focused($focusedField, equals: .username)
+                    .textContentType(.emailAddress)
+                    .keyboardType(.emailAddress)
+                    .focused($focusedField, equals: .email)
                     .submitLabel(.next)
                 Divider()
                     .padding(.bottom, 4)
@@ -61,7 +62,7 @@ struct RegistrationView: View {
             .padding(.horizontal, 32)
             .onSubmit {
                 switch focusedField {
-                case .username:
+                case .email:
                     focusedField = .password
                 case .password:
                     focusedField = .confirmPassword
@@ -77,7 +78,7 @@ struct RegistrationView: View {
                         }, label: {
                             Image(systemName: "chevron.left")
                         })
-                        .disabled(focusedField == .username)
+                        .disabled(focusedField == .email)
                         Button(action: {
                             goToNextField()
                         }, label: {
@@ -101,7 +102,7 @@ extension RegistrationView {
     private func goToPreviousField() {
         switch focusedField {
         case .password:
-            focusedField = .username
+            focusedField = .email
         case .confirmPassword:
             focusedField = .password
         default:
@@ -111,7 +112,7 @@ extension RegistrationView {
     
     private func goToNextField() {
         switch focusedField {
-        case .username:
+        case .email:
             focusedField = .password
         case .password:
             focusedField = .confirmPassword
@@ -121,7 +122,7 @@ extension RegistrationView {
     }
     
     private var isValidInput: Bool {
-        return username.count > 6 && password.count >= 8 && confirmPassword == password
+        return email.count > 6 && password.count >= 8 && confirmPassword == password
     }
     
     private func register() {

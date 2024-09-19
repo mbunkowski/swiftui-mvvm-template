@@ -7,45 +7,42 @@
 
 import SwiftUI
 
+@MainActor
 struct LoginView: View {
     
     enum Field {
-        case username
+        case email
         case password
     }
     
     @Environment(\.scenePhase) private var scenePhase
-        
+    
     @FocusState private var focusedField: Field?
     
-    @State var blurRadius: CGFloat = 0
-    
-    @State private var username: String = ""
-    @State private var password: String = ""
-          
-    @State private var isLoggedIn = false
-    @State private var isShowingRegistration = false
-    @State private var isShowingInactivityAlert = false
+    @State private var blurRadius: CGFloat = 0
 
-    @State private var inactivityTimer: Timer?
-    
+    @State private var viewModel = ViewModel()
+
     var body: some View {
         VStack {
             Spacer()
-            TextField("Username", text: $username)
+            TextField("Email", text: $viewModel.email)
                 .frame(height: 32)
-                .focused($focusedField, equals: .username)
+                .autocapitalization(.none)
+                .textContentType(.emailAddress)
+                .keyboardType(.emailAddress)
+                .focused($focusedField, equals: .email)
                 .submitLabel(.next)
             Divider()
                 .padding(.bottom, 4)
-            SecureField("Password", text: $password)
+            SecureField("Password", text: $viewModel.password)
                 .frame(height: 32)
                 .focused($focusedField, equals: .password)
                 .submitLabel(.go)
             Divider()
                 .padding(.bottom, 30)
             Button(action: {
-                logIn()
+                viewModel.logIn()
             }, label: {
                 Text("Log In")
                     .frame(maxWidth: .infinity, maxHeight: 32)
@@ -56,38 +53,36 @@ struct LoginView: View {
             }).padding(.top, 12)
             Spacer()
             Button(action: {
-                isShowingRegistration = true
+                viewModel.isShowingRegistration = true
             }, label: {
                 Text("Sign Up")
             }).buttonStyle(DefaultButtonStyle())
         }
         .padding(.horizontal, 32)
-//        .ignoresSafeArea(.keyboard)
+        .ignoresSafeArea(.keyboard)
         .onSubmit {
             switch focusedField {
-            case .username:
+            case .email:
                 focusedField = .password
             default:
-                logIn()
+                viewModel.logIn()
             }
         }
-        .fullScreenCover(isPresented: $isLoggedIn, content: {
+        .fullScreenCover(isPresented: $viewModel.userSession.isAuthenticated, content: {
             TabBarView()
-                .environmentObject(UserSession(onLogOut: {
-                    logOut()
-                }))
+                .environment(viewModel.userSession)
                 .blur(radius: blurRadius)
         })
-        .sheet(isPresented: $isShowingRegistration, content: {
+        .sheet(isPresented: $viewModel.isShowingRegistration, content: {
             RegistrationView()
         })
         .onReceive(NotificationCenter.default.publisher(for: .userActivity)) { _ in
-            resetInactivityTimer()
+            viewModel.resetInactivityTimer()
         }
-        .alert(isPresented: $isShowingInactivityAlert, content: {
+        .alert(isPresented: $viewModel.isShowingInactivityAlert, content: {
             Alert(title: Text("Log Out"), message: Text("Due to inactivity you were automatically logged out."), dismissButton: .default(Text("Ok")))
         })
-        .onChange(of: scenePhase) { _, newScenePhase in
+        .onChange(of: scenePhase) { newScenePhase, oldScenePhase in
             switch newScenePhase {
             case .active:
                 withAnimation { blurRadius = 0 }
@@ -99,38 +94,6 @@ struct LoginView: View {
                 break
             }
         }
-    }
-}
-
-extension LoginView {
-    
-    private func logIn() {
-        isLoggedIn = true
-        startInactivityTimer()
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-            username = ""
-            password = ""
-        }
-    }
-    
-    private func startInactivityTimer() {
-        inactivityTimer?.invalidate()
-        inactivityTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { timer in
-            isLoggedIn = false
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                isShowingInactivityAlert = true
-            }
-        })
-    }
-    
-    private func resetInactivityTimer() {
-        guard isLoggedIn else { return }
-        startInactivityTimer()
-    }
-    
-    private func logOut() {
-        isLoggedIn = false
-        inactivityTimer?.invalidate()
     }
 }
 

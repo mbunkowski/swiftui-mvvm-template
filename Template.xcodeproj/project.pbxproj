@@ -24,7 +24,11 @@
 		6127832F2C12AA6F00CF00B1 /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127832D2C12AA6E00CF00B1 /* HTTPHeader.swift */; };
 		612783302C12AA6F00CF00B1 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127832E2C12AA6F00CF00B1 /* HTTPClient.swift */; };
 		612783322C12AAC000CF00B1 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612783312C12AAC000CF00B1 /* HTTPError.swift */; };
+		61B21F1E2C9B177C000BF0DD /* LoginView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B21F1D2C9B177C000BF0DD /* LoginView+ViewModel.swift */; };
 		61F00BEB2C30936B000E901A /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F00BEA2C30936B000E901A /* RegistrationView.swift */; };
+		61F00BED2C30F527000E901A /* APILibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F00BEC2C30F527000E901A /* APILibrary.swift */; };
+		61F00BEF2C30F57D000E901A /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F00BEE2C30F57D000E901A /* Tokens.swift */; };
+		61F00BF12C30F68D000E901A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F00BF02C30F68D000E901A /* Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +69,12 @@
 		6127832D2C12AA6E00CF00B1 /* HTTPHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
 		6127832E2C12AA6F00CF00B1 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		612783312C12AAC000CF00B1 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
+		61B21F1D2C9B177C000BF0DD /* LoginView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView+ViewModel.swift"; sourceTree = "<group>"; };
+		61BF18142C30FC1B00FFD1E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61F00BEA2C30936B000E901A /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		61F00BEC2C30F527000E901A /* APILibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILibrary.swift; sourceTree = "<group>"; };
+		61F00BEE2C30F57D000E901A /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
+		61F00BF02C30F68D000E901A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,13 +130,16 @@
 				612782F12C12A64E00CF00B1 /* TemplateApp.swift */,
 				6127831E2C12A73B00CF00B1 /* LaunchView.swift */,
 				6127831F2C12A73B00CF00B1 /* LoginView.swift */,
+				61B21F1D2C9B177C000BF0DD /* LoginView+ViewModel.swift */,
 				61F00BEA2C30936B000E901A /* RegistrationView.swift */,
 				612783222C12A73B00CF00B1 /* UserSession.swift */,
 				612783212C12A73B00CF00B1 /* TabBarView.swift */,
 				6127831D2C12A73B00CF00B1 /* HomeView.swift */,
 				612783202C12A73B00CF00B1 /* MoreView.swift */,
+				61BF18152C31013800FFD1E0 /* Model */,
 				612783332C12AB2D00CF00B1 /* Network */,
 				612782F52C12A65100CF00B1 /* Assets.xcassets */,
+				61BF18142C30FC1B00FFD1E0 /* Info.plist */,
 				612782F72C12A65100CF00B1 /* Preview Content */,
 			);
 			path = Template;
@@ -161,11 +173,21 @@
 		612783332C12AB2D00CF00B1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				61F00BEC2C30F527000E901A /* APILibrary.swift */,
 				6127832E2C12AA6F00CF00B1 /* HTTPClient.swift */,
 				6127832D2C12AA6E00CF00B1 /* HTTPHeader.swift */,
 				612783312C12AAC000CF00B1 /* HTTPError.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		61BF18152C31013800FFD1E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				61F00BEE2C30F57D000E901A /* Tokens.swift */,
+				61F00BF02C30F68D000E901A /* Request.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +254,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					612782ED2C12A64E00CF00B1 = {
 						CreatedOnToolsVersion = 15.3;
@@ -306,11 +328,15 @@
 				612783272C12A73B00CF00B1 /* TabBarView.swift in Sources */,
 				612783322C12AAC000CF00B1 /* HTTPError.swift in Sources */,
 				6127831C2C12A6C300CF00B1 /* Application.swift in Sources */,
+				61F00BF12C30F68D000E901A /* Request.swift in Sources */,
 				612783302C12AA6F00CF00B1 /* HTTPClient.swift in Sources */,
 				612783242C12A73B00CF00B1 /* LaunchView.swift in Sources */,
+				61F00BED2C30F527000E901A /* APILibrary.swift in Sources */,
 				612783232C12A73B00CF00B1 /* HomeView.swift in Sources */,
 				612783282C12A73B00CF00B1 /* UserSession.swift in Sources */,
 				612782F22C12A64E00CF00B1 /* TemplateApp.swift in Sources */,
+				61F00BEF2C30F57D000E901A /* Tokens.swift in Sources */,
+				61B21F1E2C9B177C000BF0DD /* LoginView+ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -456,7 +482,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -476,12 +502,14 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Template/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Template/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = " <key>NSAppTransportSecurity</key>\n <dict>\n    <key>NSExceptionDomains</key>\n    <dict>\n        <key>localhost</key>\n        <dict>\n            <key>NSIncludesSubdomains</key>\n            <true/>\n            <key>NSExceptionAllowsInsecureHTTPLoads</key>\n            <true/>\n            <key>NSExceptionRequiresForwardSecrecy</key>\n            <true/>\n            <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>\n            <false/>\n            <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>\n            <true/>\n            <key>NSRequiresCertificateTransparency</key>\n            <false/>\n        </dict>\n    </dict>\n</dict>";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -490,7 +518,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.template.Template;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -505,12 +533,14 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Template/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Template/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = " <key>NSAppTransportSecurity</key>\n <dict>\n    <key>NSExceptionDomains</key>\n    <dict>\n        <key>localhost</key>\n        <dict>\n            <key>NSIncludesSubdomains</key>\n            <true/>\n            <key>NSExceptionAllowsInsecureHTTPLoads</key>\n            <true/>\n            <key>NSExceptionRequiresForwardSecrecy</key>\n            <true/>\n            <key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>\n            <false/>\n            <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>\n            <true/>\n            <key>NSRequiresCertificateTransparency</key>\n            <false/>\n        </dict>\n    </dict>\n</dict>";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -519,7 +549,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.template.Template;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -527,7 +557,6 @@
 		612783162C12A65100CF00B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -546,7 +575,6 @@
 		612783172C12A65100CF00B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -565,7 +593,6 @@
 		612783192C12A65100CF00B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -582,7 +609,6 @@
 		6127831A2C12A65100CF00B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

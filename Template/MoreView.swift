@@ -9,8 +9,8 @@ import SwiftUI
 
 struct MoreView: View {
     
-    @EnvironmentObject var userSession: UserSession
-
+    @Environment(UserSession.self) var userSession
+    
     var body: some View {
         NavigationView {
             Button("Log Out") {

@@ -10,7 +10,7 @@ import SwiftUI
 struct LaunchView: View {
     
     @State private var isLoaded = false
-
+    
     var body: some View {
         if isLoaded {
             LoginView()

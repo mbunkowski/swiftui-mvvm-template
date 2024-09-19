@@ -7,15 +7,27 @@
 
 import SwiftUI
 
-final class UserSession: ObservableObject {
+@MainActor
+@Observable
+final class UserSession {
     
-    private var onLogOut: (() -> Void)
+    private let apiLibrary: APILibrary
     
-    init(onLogOut: @escaping (() -> Void)) {
-        self.onLogOut = onLogOut
+    private var tokens: Tokens?
+
+    var isAuthenticated = false
+    
+    init(apiLibrary: APILibrary) {
+        self.apiLibrary = apiLibrary
+    }
+    
+    func authenticate(email: String, password: String) async throws {
+        tokens = try await apiLibrary.authenticate(email: email, password: password)
+        isAuthenticated = true
     }
     
     func logOut() {
-        onLogOut()
+        isAuthenticated = false
+        tokens = nil
     }
 }
