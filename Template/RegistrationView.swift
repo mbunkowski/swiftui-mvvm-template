@@ -15,6 +15,8 @@ struct RegistrationView: View {
         case confirmPassword
     }
     
+    var onRegister: (((Tokens)) -> Void)
+    
     @Environment(\.dismiss) private var dismiss
     
     @FocusState private var focusedField: Field?
@@ -49,12 +51,12 @@ struct RegistrationView: View {
                 Divider()
                     .padding(.bottom, 30)
                 Button(action: {
-                    
+                    register()
                 }, label: {
                     Text("Register")
                         .frame(maxWidth: .infinity, maxHeight: 32)
                 }).buttonStyle(BorderedProminentButtonStyle())
-                    .disabled(isValidInput)
+                    .disabled(!isValidInput)
                 Spacer()
                 
             }
@@ -126,6 +128,13 @@ extension RegistrationView {
     }
     
     private func register() {
-        
+        Task {
+            do {
+                let tokens = try await APILibrary().register(email: email, password: password)
+                onRegister(tokens)
+            } catch {
+                
+            }
+        }
     }
 }

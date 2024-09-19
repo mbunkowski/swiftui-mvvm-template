@@ -18,6 +18,8 @@ extension LoginView {
               
         var isShowingRegistration = false
         var isShowingInactivityAlert = false
+        
+        var isLoading = false
 
         var inactivityTimer: Timer?
         
@@ -26,15 +28,23 @@ extension LoginView {
         func logIn() {
             Task { @MainActor in
                 do {
+                    isLoading = true
                     try await self.userSession.authenticate(email: email, password: password)
                     startInactivityTimer()
+                    isLoading = false
                     try await Task.sleep(for: .seconds(0.5))
                     email = ""
                     password = ""
                 } catch {
+                    isLoading = false
                     print(error)
                 }
             }
+        }
+        
+        func logIn(tokens: Tokens) {
+            isShowingRegistration = false
+            userSession.authenticate(tokens: tokens)
         }
         
         private func startInactivityTimer() {

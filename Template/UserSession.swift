@@ -26,6 +26,11 @@ final class UserSession {
         isAuthenticated = true
     }
     
+    func authenticate(tokens: Tokens) {
+        self.tokens = tokens
+        isAuthenticated = true
+    }
+    
     func logOut() {
         isAuthenticated = false
         tokens = nil

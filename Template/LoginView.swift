@@ -44,8 +44,14 @@ struct LoginView: View {
             Button(action: {
                 viewModel.logIn()
             }, label: {
-                Text("Log In")
-                    .frame(maxWidth: .infinity, maxHeight: 32)
+                if viewModel.isLoading {
+                    ProgressView()
+                        .tint(.white)
+                        .frame(maxWidth: .infinity, maxHeight: 32)
+                } else {
+                    Text("Log In")
+                        .frame(maxWidth: .infinity, maxHeight: 32)
+                }
             }).buttonStyle(BorderedProminentButtonStyle())
             Button(action: {
             }, label: {
@@ -74,7 +80,9 @@ struct LoginView: View {
                 .blur(radius: blurRadius)
         })
         .sheet(isPresented: $viewModel.isShowingRegistration, content: {
-            RegistrationView()
+            RegistrationView(onRegister: { tokens in
+                viewModel.logIn(tokens: tokens)
+            })
         })
         .onReceive(NotificationCenter.default.publisher(for: .userActivity)) { _ in
             viewModel.resetInactivityTimer()

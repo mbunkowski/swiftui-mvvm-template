@@ -9,7 +9,7 @@ import Foundation
 @MainActor
 class HTTPClient {
     
-    static let scheme = "https"
+    static let scheme = "http"
     
     private let host: String
     

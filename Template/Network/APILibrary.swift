@@ -26,6 +26,12 @@ final class APILibrary: ObservableObject {
         let req = Request.Login(email: email, password: password)
         return try await client.post("/api/auth/login", body: req, decoder: decoder)
     }
+    
+    @MainActor
+    func register(email: String, password: String) async throws -> Tokens {
+        let req = Request.Login(email: email, password: password)
+        return try await client.post("/api/auth/register", body: req, decoder: decoder)
+    }
 
     func refreshSession(token: String) async throws -> Tokens {
         let req = Request.RefreshSession(token: token)
